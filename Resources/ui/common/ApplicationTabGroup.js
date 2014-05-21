@@ -124,21 +124,33 @@ function ApplicationTabGroup() {
 		}
 	});
 	
+	function createAndroidToast(message) {
+		var theToast = Ti.UI.createNotification({
+			message:message,
+    		duration: Ti.UI.NOTIFICATION_DURATION_LONG
+		});
+		theToast.show();
+	}
+	
+	function showMessage(message) {
+		if(Ti.Platform.osname == 'backberry') {
+			messageWin.cancel();
+			messageWin.message = message;
+			messageWin.show();
+		} else if (Ti.Platform.osname == 'android') {
+			createAndroidToast(message);
+		} else {
+			messageWin.setLabel(message);
+			messageWin.open();
+			setTimeout(function() {
+				messageWin.close({opacity:0,duration:500});
+			},1000);
+		}
+	}
+	
 	self.addEventListener('open',function(e) {
 		if (e.source == self){
-			if(Ti.Platform.osname == 'blackberry') {
-				messageWin.cancel();
-				messageWin.message = 'tab group open event';
-				messageWin.show();
-			} else {
-				Titanium.UI.setBackgroundColor('#fff');
-				messageLabel.text = 'tab group open event';
-				messageWin.open();
-		
-				setTimeout(function() {
-					messageWin.close({opacity:0,duration:500});
-				},1000);
-			}
+			showMessage('tab group open event');
 		}
 	});
 	
@@ -151,10 +163,9 @@ function ApplicationTabGroup() {
 
 		// iOS fires with source tabGroup. Android with source tab
 		if ((e.source == baseUITab) || (e.source == controlsTab) || (e.source == phoneTab) || (e.source == platformTab) || (e.source == mashupsTab) || (e.source == self)) {
-			if(Ti.Platform.osname == 'blackberry') {
-				messageWin.cancel();
-				messageWin.message = 'tab changed to ' + e.index + ' old index ' + e.previousIndex;
-				messageWin.show();
+			if ((Ti.Platform.osname == 'blackberry')|| (Ti.Platform.osname == 'android') ) {
+				var msg = 'tab changed to ' + e.index + ' old index ' + e.previousIndex;
+				showMessage(msg);
 			} else {
 				messageLabel.text = 'tab changed to ' + e.index + ' old index ' + e.previousIndex;
 				messageWin.open();
