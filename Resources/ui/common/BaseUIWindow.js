@@ -111,7 +111,7 @@ function BaseUIWindow(title) {
 			Ti.API.info(Ti.dumpCoverage());
 		}
 	});
-	if(Ti.Platform.osname != 'blackberry') {
+	if ( (Ti.Platform.osname != 'blackberry') && (Ti.Platform.osname != 'android') ){
 		//
 		//  ADD EVENT LISTENERS FOR CUSTOM EVENTS
 		//
@@ -139,38 +139,53 @@ function BaseUIWindow(title) {
 		});
 		win.add(view);
 		win.add(label);
-	} else {
+	} else if (Ti.Platform.osname != 'android'){
 		var toast = Ti.BlackBerry.createToast();
 	}
+	
+	function createAndroidToast(message) {
+		var theToast = Ti.UI.createNotification({
+			message:message,
+    		duration: Ti.UI.NOTIFICATION_DURATION_SHORT
+		});
+		theToast.show();
+	}
+	
 	Titanium.App.addEventListener('event_one', function(e)
 	{
-		if(Ti.Platform.osname != 'blackberry') {
+		if(Ti.Platform.osname == 'blackberry') {
+			toast.cancel();
+			toast.message = 'base_ui.js: event one, array length = ' + e.data.length;
+			toast.show();
+		} else if (Ti.Platform.osname == 'android') {
+			var msg = 'base_ui.js: event one, array length = ' + e.data.length;
+			createAndroidToast(msg);
+		} else {
 			label.text = 'base_ui.js: event one, array length = ' + e.data.length;
 			win.open();
 			setTimeout(function()
 			{
 				win.close({opacity:0,duration:500});
 			},1000);
-		} else {
-			toast.cancel();
-			toast.message = 'base_ui.js: event one, array length = ' + e.data.length;
-			toast.show();
 		}
 	});
 	
 	Titanium.App.addEventListener('event_two', function(e)
 	{
-		if(Ti.Platform.osname != 'blackberry') {
+		if(Ti.Platform.osname == 'blackberry') {
+			toast.cancel();
+			toast.message = 'base_ui.js: event two, name = ' + e.name;
+			toast.show();
+		} else if (Ti.Platform.osname == 'android') {
+			var msg = 'base_ui.js: event two, name = ' + e.name;
+			createAndroidToast(msg);
+		} else {
 			label.text = 'base_ui.js: event two, name = ' + e.name;
 			win.open();
 			setTimeout(function()
 			{
 				win.close({opacity:0,duration:500});
 			},1000);
-		} else {
-			toast.cancel();
-			toast.message = 'base_ui.js: event two, name = ' + e.name;
-			toast.show();
 		}
 	});
 

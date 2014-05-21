@@ -53,36 +53,44 @@ if (Ti.version < 2.0 ) {
 	if(Ti.Platform.osname == 'backberry') {
 		messageWin = Ti.BlackBerry.createToast();
 	} else {
-	var MessageWindow = require('ui/common/MessageWindow');
+		var MessageWindow = require('ui/common/MessageWindow');
 		messageWin = new MessageWindow();
 	}
-		
-	Titanium.App.addEventListener('event_one', function(e) {
-		if(Ti.Platform.osname == 'backberry') {
+	
+	
+	function createAndroidToast(message) {
+		var theToast = Ti.UI.createNotification({
+			message:message,
+    		duration: Ti.UI.NOTIFICATION_DURATION_SHORT
+		});
+		theToast.show();
+	}
+	
+	function showMessage(message) {
+		if (Ti.Platform.osname == 'backberry') {
 			messageWin.cancel();
-			messageWin.message = 'app.js: event one, array length = ' + e.data.length;
+			messageWin.message = message;
 			messageWin.show();
+		} else if (Ti.Platform.osname == 'android') {
+			createAndroidToast(message);
 		} else {
-			messageWin.setLabel('app.js: event one, array length = ' + e.data.length);
+			messageWin.setLabel(message);
 			messageWin.open();
 			setTimeout(function() {
 				messageWin.close({opacity:0,duration:500});
 			},1000);
 		}
+	}
+	
+		
+	Titanium.App.addEventListener('event_one', function(e) {
+		var msg = 'app.js: event one, array length = ' + e.data.length;
+		showMessage(msg);
 	});
 	
 	Titanium.App.addEventListener('event_two', function(e) {
-		if(Ti.Platform.osname == 'backberry') {
-			messageWin.cancel();
-			messageWin.message = 'app.js: event two, name = ' + e.name;
-			messageWin.show();
-		} else {
-			messageWin.setLabel('app.js: event two, name = ' + e.name);
-			messageWin.open();
-			setTimeout(function() {
-				messageWin.close({opacity:0,duration:500});
-			},1000);	
-		}
+		var msg = 'app.js: event two, name = ' + e.name;
+		showMessage(msg);
 	});
 	
 	// test out logging to developer console, formatting and localization
