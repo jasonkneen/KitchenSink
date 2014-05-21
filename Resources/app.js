@@ -61,7 +61,7 @@ if (Ti.version < 2.0 ) {
 	function createAndroidToast(message) {
 		var theToast = Ti.UI.createNotification({
 			message:message,
-    		duration: Ti.UI.NOTIFICATION_DURATION_LONG
+    		duration: Ti.UI.NOTIFICATION_DURATION_SHORT
 		});
 		theToast.show();
 	}
