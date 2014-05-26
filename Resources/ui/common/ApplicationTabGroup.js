@@ -140,6 +140,7 @@ function ApplicationTabGroup() {
 		} else if (Ti.Platform.osname == 'android') {
 			createAndroidToast(message);
 		} else {
+			Titanium.UI.setBackgroundColor('#fff');
 			messageWin.setLabel(message);
 			messageWin.open();
 			setTimeout(function() {
