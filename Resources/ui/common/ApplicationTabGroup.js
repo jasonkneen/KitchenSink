@@ -133,7 +133,7 @@ function ApplicationTabGroup() {
 	}
 	
 	function showMessage(message) {
-		if(Ti.Platform.osname == 'backberry') {
+		if(Ti.Platform.osname == 'blackberry') {
 			messageWin.cancel();
 			messageWin.message = message;
 			messageWin.show();

@@ -50,7 +50,7 @@ if (Ti.version < 2.0 ) {
 		theTabGroup.open();
 	}
 	var messageWin;
-	if(Ti.Platform.osname == 'backberry') {
+	if(Ti.Platform.osname == 'blackberry') {
 		messageWin = Ti.BlackBerry.createToast();
 	} else {
 		var MessageWindow = require('ui/common/MessageWindow');
@@ -67,7 +67,7 @@ if (Ti.version < 2.0 ) {
 	}
 	
 	function showMessage(message) {
-		if (Ti.Platform.osname == 'backberry') {
+		if (Ti.Platform.osname == 'blackberry') {
 			messageWin.cancel();
 			messageWin.message = message;
 			messageWin.show();
