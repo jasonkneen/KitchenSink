@@ -6,7 +6,7 @@
         <target device="iphone">true</target>
         <target device="ipad">true</target>
         <target device="android">true</target>
-        <target device="blackberry">false</target>
+        <target device="blackberry">true</target>
     </deployment-targets>
     <property name="ti.android.useLegacyWindow" type="bool">true</property>
     <property name="ti.ui.defaultunit" type="string">dp</property>
@@ -58,6 +58,26 @@
             <service type="interval" url="testservice.js"/>
         </services>
     </android>
+    <blackberry>
+        <permissions>
+            <permission>access_shared</permission>
+            <permission>use_camera</permission>
+            <permission>read_device_identifying_information</permission>
+            <permission>access_pimdomain_contacts</permission>
+            <permission>bbm_connect</permission>
+            <permission>access_pimdomain_calendars</permission>
+            <permission>access_pimdomain_messages</permission>
+            <permission>read_geolocation</permission>
+            <permission>access_internet</permission>
+            <permission>access_location_services</permission>
+            <permission>record_audio</permission>
+            <permission>access_pimdomain_notebooks</permission>
+            <permission>access_phone</permission>
+            <permission>post_notification</permission>
+            <permission>run_when_backgrounded</permission>
+            <permission>access_sms_mms</permission>
+        </permissions>
+    </blackberry> 
     <tizen appid="nmgg3ski3z" xmlns:tizen="http://ti.appcelerator.org">
         <tizen:privilege name="http://tizen.org/privilege/alarm"/>
         <tizen:privilege name="http://tizen.org/privilege/application.launch"/>
