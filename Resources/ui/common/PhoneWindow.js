@@ -55,7 +55,6 @@ function PhoneWindow(title) {
 		data.push({title:'Music', hasChild:true, test:'ui/handheld/ios/phone/music'});
 		data.push({title:'Proximity Events', hasChild:true, test:'/etc/todo'});
 		data.push({title:'App Badge', hasChild:true, test:'ui/handheld/ios/phone/app_badge'});
-		data.push({title:'Status Bar', hasChild:true, test:'ui/handheld/ios/phone/statusbar'});
 		data.push({title:'Push Notifications', hasChild:true, test:'ui/handheld/ios/phone/push_notification'});
 	}
 	

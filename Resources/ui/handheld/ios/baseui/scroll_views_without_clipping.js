@@ -2,11 +2,15 @@ function scroll_view_noclip(_args) {
 	//
 	// SETUP WINDOW STYLES
 	//
-	Titanium.UI.iPhone.statusBarStyle = Titanium.UI.iPhone.StatusBar.OPAQUE_BLACK;
+	
 	var win = Ti.UI.createWindow({
 		title:_args.title
 	});
 	
+	if (Ti.version >= '3.1.3') {
+		win.statusBarStyle = Ti.UI.iPhone.StatusBar.OPAQUE_BLACK;
+	}
+
 	var cover = Titanium.UI.createView({
 		backgroundImage:'/images/scrollable_view/bg.png',
 		zIndex:5
