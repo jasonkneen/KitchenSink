@@ -110,12 +110,6 @@ function win_props(_args) {
 	var win2 = null;
 	buttonLayout.addEventListener('click', function()
 	{	
-		if(Ti.Platform.osname == 'blackberry') {
-			Ti.BlackBerry.createToastNotification({
-				message: 'Test invalid for BlackBerry'
-			}).show();
-			return;
-		}
 		if (layout)
 		{
 			win1 = Titanium.UI.createWindow({
@@ -154,7 +148,11 @@ function win_props(_args) {
 			layout=true;
 		}
 	});
-	win.add(buttonLayout);
+	// Layout test is not valid for BlackBerry or Android
+	var osname = Ti.Platform.osname;
+	if (osname != 'blackberry' && osname != 'android') {
+		win.add(buttonLayout);
+	}
 	
 	//
 	// TOGGLE BORDER PROPERTIES

@@ -8,9 +8,8 @@
         <target device="android">true</target>
         <target device="blackberry">true</target>
     </deployment-targets>
-    <property name="ti.android.useLegacyWindow" type="bool">true</property>
     <property name="ti.ui.defaultunit" type="string">dp</property>
-    <sdk-version>3.3.0.GA</sdk-version>
+    <sdk-version>3.4.0</sdk-version>
     <id>com.appcelerator.kitchensink</id>
     <name>KitchenSink</name>
     <version>3.3.0</version>
@@ -77,7 +76,7 @@
             <permission>run_when_backgrounded</permission>
             <permission>access_sms_mms</permission>
         </permissions>
-    </blackberry> 
+    </blackberry>
     <tizen appid="nmgg3ski3z" xmlns:tizen="http://ti.appcelerator.org">
         <tizen:privilege name="http://tizen.org/privilege/alarm"/>
         <tizen:privilege name="http://tizen.org/privilege/application.launch"/>
