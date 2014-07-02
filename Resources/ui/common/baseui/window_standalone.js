@@ -6,6 +6,7 @@
 function win_standalone(_args) {
 	var isMobileWeb = Ti.Platform.osname === 'mobileweb',
 		isTizen = Ti.Platform.osname === 'tizen',
+		isAndroid = Ti.Platform.osname === 'android',
 		isIOS = (Ti.Platform.osname == 'iphone' || Ti.Platform.osname == 'ipad');
 		win = Titanium.UI.createWindow({
 			title:_args.title
@@ -60,12 +61,15 @@ function win_standalone(_args) {
 		//
 		//  OPEN (ANIMATE FROM BOTTOM RIGHT)
 		//
-		var b2 = Titanium.UI.createButton({
-			title: 'Open (Nav Bar Covered)',
-			width: 200,
-			height: 40,
-			top: 60
-		});
+		var b2 = null;
+		if (isAndroid && Ti.version < "3.3.0") {
+			var b2 = Titanium.UI.createButton({
+				title: 'Open (Nav Bar Covered)',
+				width: 200,
+				height: 40,
+				top: 60
+			});
+		}
 		//
 		//  TRADITIONAL MODAL (FROM 0.8.x)
 		//
@@ -128,7 +132,7 @@ function win_standalone(_args) {
 
 				w.open();
 			});
-		} else {
+		} else if (b2 != null) {
 			b2.addEventListener('click', function() {
 				var options = {
 					backgroundColor: '#336699',
