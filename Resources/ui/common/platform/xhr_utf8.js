@@ -88,8 +88,8 @@ function xhr_utf8(_args) {
 	{
 		Ti.API.info('in utf-8 error for GET');
 	};
-	xhr.open("GET","http://api.appcelerator.net/p/v1/echo");
-	xhr.send({"a":"€漢字"});
+	xhr.open("GET","http://api.appcelerator.net/p/v1/echo?漢=€漢字");
+	xhr.send();
 	
 	//
 	// XHR POST
