@@ -77,7 +77,7 @@
             <permission>run_when_backgrounded</permission>
             <permission>access_sms_mms</permission>
         </permissions>
-    </blackberry> 
+    </blackberry>
     <tizen appid="nmgg3ski3z" xmlns:tizen="http://ti.appcelerator.org">
         <tizen:privilege name="http://tizen.org/privilege/alarm"/>
         <tizen:privilege name="http://tizen.org/privilege/application.launch"/>
@@ -115,7 +115,6 @@
         <access origin="http://appc.me/Test/Cookies/" subdomains="true"/>
     </tizen>
     <modules>
-        <module platform="tizen">tizen</module>
         <module platform="android">facebook</module>
         <module platform="iphone">facebook</module>
     </modules>
