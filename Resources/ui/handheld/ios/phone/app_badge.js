@@ -2,6 +2,12 @@ function app_badge(_args) {
 	var win = Titanium.UI.createWindow({
 		title:_args.title
 	});
+	win.addEventListener('open', function()
+	{
+		Ti.App.iOS.registerForLocalNotifications({
+			types: Ti.App.iOS.NOTIFICATION_TYPE_BADGE
+		});
+	});
 	
 	var b1 = Titanium.UI.createButton({
 		title:'Set App Badge',
