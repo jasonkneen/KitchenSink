@@ -4,8 +4,8 @@ function app_badge(_args) {
 	});
 	win.addEventListener('open', function()
 	{
-		Ti.App.iOS.registerForLocalNotifications({
-			types: Ti.App.iOS.NOTIFICATION_TYPE_BADGE
+		Ti.App.iOS.registerUserNotificationSettings({
+			types: [Ti.App.iOS.USER_NOTIFICATION_TYPE_BADGE]
 		});
 	});
 	
