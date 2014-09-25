@@ -230,11 +230,11 @@ function getTweets() {
 				var created_at = prettyDate(strtotime(tweets[c].created_at));
 				var bgcolor = (c % 2) == 0 ? '#fff' : '#eee';
 
-				var row = Ti.UI.createTableViewRow({hasChild:true,height:'120dp',backgroundColor:bgcolor});
+				var row = Ti.UI.createTableViewRow({hasChild:true,height:Ti.UI.SIZE,backgroundColor:bgcolor});
 
 				// Create a vertical layout view to hold all the info labels and images for each tweet
 				var post_view = Ti.UI.createView({
-					height:'120dp',
+					height: Ti.UI.SIZE,
 					layout:'vertical',
 					left:5,
 					top:5,
