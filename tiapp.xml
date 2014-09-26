@@ -27,6 +27,18 @@
     <navbar-hidden>false</navbar-hidden>
     <analytics>true</analytics>
     <guid>28a706e9-4130-4acb-bc76-9494255a9279</guid>
+    <ios>
+        <plist>
+            <dict>
+                <key>NSLocationWhenInUseUsageDescription</key>
+                <string>
+                Specify the reason for accessing the user’s location information.
+                This appears in the alert dialog when asking the user for permission to
+                access their location.
+                </string>
+            </dict>
+        </plist>
+    </ios>
     <iphone>
         <orientations device="iphone">
             <orientation>Ti.UI.PORTRAIT</orientation>
