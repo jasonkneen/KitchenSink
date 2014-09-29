@@ -95,67 +95,6 @@ function win_props(_args) {
 	});
 	win.add(buttonOpacity);
 	
-	
-	//
-	// LAYOUT AND DIMENSION PROPERTIES
-	//
-	var buttonLayout = Titanium.UI.createButton({
-		title:'Layout/Dimension Properties',
-		width:220,
-		height:40,
-		top:210
-	});
-	var layout=true;
-	var win1 = null;
-	var win2 = null;
-	buttonLayout.addEventListener('click', function()
-	{	
-		if(Ti.Platform.osname == 'blackberry') {
-			Ti.BlackBerry.createToastNotification({
-				message: 'Test invalid for BlackBerry'
-			}).show();
-			return;
-		}
-		if (layout)
-		{
-			win1 = Titanium.UI.createWindow({
-				height:50,
-				width:200,
-				bottom:50,
-				left:10,
-				backgroundColor:'#336699',
-				borderRadius:10,
-				zIndex:3
-			});
-			win2 = Titanium.UI.createWindow({
-				height:50,
-				width:200,
-				bottom:60,
-				left:20,
-				backgroundColor:'pink',
-				borderRadius:10,
-				zIndex:1
-			});
-			
-			win1.open();
-			win2.open();
-			layout=false;
-			
-			win.addEventListener('close', function() {
-				win1.close();
-				win2.close();
-				layout=true;
-			});
-		}
-		else
-		{
-			win1.close();
-			win2.close();
-			layout=true;
-		}
-	});
-	win.add(buttonLayout);
-	
 	//
 	// TOGGLE BORDER PROPERTIES
 	//
@@ -163,7 +102,7 @@ function win_props(_args) {
 		title:'Toggle Border Properties',
 		width:220,
 		height:40,
-		top:260
+		top:210
 	});
 	var border=true;
 	buttonBorder.addEventListener('click', function()

@@ -10,10 +10,10 @@
     </deployment-targets>
     <property name="ti.android.useLegacyWindow" type="bool">true</property>
     <property name="ti.ui.defaultunit" type="string">dp</property>
-    <sdk-version>3.3.0.GA</sdk-version>
+    <sdk-version>3.4.0.GA</sdk-version>
     <id>com.appcelerator.kitchensink</id>
     <name>KitchenSink</name>
-    <version>3.3.0</version>
+    <version>3.4.0</version>
     <publisher>appcelerator</publisher>
     <url>http://appcelerator.com</url>
     <description>not specified</description>
@@ -27,6 +27,18 @@
     <navbar-hidden>false</navbar-hidden>
     <analytics>true</analytics>
     <guid>28a706e9-4130-4acb-bc76-9494255a9279</guid>
+    <ios>
+        <plist>
+            <dict>
+                <key>NSLocationWhenInUseUsageDescription</key>
+                <string>
+                Specify the reason for accessing the user’s location information.
+                This appears in the alert dialog when asking the user for permission to
+                access their location.
+                </string>
+            </dict>
+        </plist>
+    </ios>
     <iphone>
         <orientations device="iphone">
             <orientation>Ti.UI.PORTRAIT</orientation>

@@ -21,12 +21,12 @@ function main_Test(){
 	});
 
 	// MASTER NAV GROUP
-	MainTests.masterNav = Ti.UI.iPhone.createNavigationGroup({
+	MainTests.masterNav = Ti.UI.iOS.createNavigationWindow({
 		window:MainTests.masterWindow
 	});
 
 	// DETAIL NAV GROUP
-	MainTests.detailNav = Ti.UI.iPhone.createNavigationGroup({
+	MainTests.detailNav = Ti.UI.iOS.createNavigationWindow({
 		window:MainTests.detailWindow
 	});
 
