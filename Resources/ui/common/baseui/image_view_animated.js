@@ -174,7 +174,7 @@ function image_view_anim(_args) {
 	var l = Titanium.UI.createLabel({
 		text:'Duration = 110 ms (re-start to apply)',
 		bottom:10,
-		color:'white',
+		color:'blue',
 		width:'auto',
 		height:'auto'
 	});
