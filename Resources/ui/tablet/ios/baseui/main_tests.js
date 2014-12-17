@@ -71,6 +71,11 @@ function main_Test(){
 		if (e.rowData.title == 'Close Test') {
 			MainTests.splitView.close();
 		}
+		else if (e.rowData.title == 'Embedded Video') {
+			MainTests.detailWindow.animate({view:e.rowData.v,transition:Ti.UI.iPhone.AnimationStyle.CURL_UP},function(){
+				Video.setUrl();
+			});
+		}
 		else{
 			MainTests.detailWindow.animate({view:e.rowData.v,transition:Ti.UI.iPhone.AnimationStyle.CURL_UP});	
 		}
