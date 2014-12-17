@@ -23,28 +23,13 @@ Popover.init = function()
 	// build first popover
 	b1.addEventListener('click', function()
 	{
-		var close = Ti.UI.createButton({
-			title:'Close'
-		});
-		var canc = Ti.UI.createButton({
-			title:'Cancel'
-		});
-		canc.addEventListener('click', function()
-		{
-			popover.hide({animated:true});
-		});
-		close.addEventListener('click', function()
-		{
-			popover.hide({animated:true});
-		});
 		var popover = Ti.UI.iPad.createPopover({ 
 			width:200, 
 			height:350,
 			title:'Table View',
-			rightNavButton:close,
-			leftNavButton:canc,
-			barColor:'#111'
 		}); 
+		
+		var contentView = Ti.UI.createView();
 		var searchBar = Ti.UI.createSearchBar({top:0,height:44,barColor:'#333'});
 
 		var tableView = Ti.UI.createTableView({
@@ -53,9 +38,9 @@ Popover.init = function()
 			height:300
 		});
 
-		popover.add(searchBar);
-		popover.add(tableView);
-
+		contentView.add(searchBar);
+		contentView.add(tableView);
+		popover.contentView = contentView;
 		popover.show({
 			view:b1,
 			animated:true,
@@ -93,9 +78,11 @@ Popover.init = function()
 		picker.add(data);
 		picker.selectionIndicator = true;
 
-		popover.add(picker);
+		var contentView = Ti.UI.createView();
+		contentView.add(picker);
 		// TEST: #1282
 		picker.setSelectedRow(0,1,true);
+		popover.contentView = contentView;
 		popover.show({
 			view:b2,
 			animated:true,
@@ -163,8 +150,7 @@ Popover.init = function()
 			pagingControlHeight:30,
 		});
 
-		popover.add(scrollView);
-
+		popover.contentView = scrollView;
 		popover.show({
 			view:b3,
 		}); 
