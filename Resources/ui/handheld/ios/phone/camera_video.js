@@ -118,49 +118,51 @@ function cam_video(_args) {
 		container = null;
 	});
 
-
-	Titanium.Media.showCamera({
-	
-		success:function(event)
-		{
-			Ti.API.debug("video was taken");
-	
-			// programatically hide the camera
-			Ti.Media.hideCamera();
-	
-			var activeMovie = Titanium.Media.createVideoPlayer({
-				media:event.media,
-				backgroundColor:'#111',
-				mediaControlStyle:Titanium.Media.VIDEO_CONTROL_FULLSCREEN,
-				scalingMode:Titanium.Media.VIDEO_SCALING_MODE_FILL
-			});
-			container.win.add(activeMovie);
-		},
-		cancel:function()
-		{
-		},
-		error:function(error)
-		{
-			var a = Titanium.UI.createAlertDialog({title:'Camera'});
-			if (error.code == Titanium.Media.NO_CAMERA)
+	container.showCamera = function(){
+		Titanium.Media.showCamera({
+		
+			success:function(event)
 			{
-				a.setMessage('Please run this test on device');
-			}
-			else
+				Ti.API.debug("video was taken");
+		
+				// programatically hide the camera
+				Ti.Media.hideCamera();
+		
+				var activeMovie = Titanium.Media.createVideoPlayer({
+					media:event.media,
+					backgroundColor:'#111',
+					mediaControlStyle:Titanium.Media.VIDEO_CONTROL_FULLSCREEN,
+					scalingMode:Titanium.Media.VIDEO_SCALING_MODE_FILL
+				});
+				container.win.add(activeMovie);
+			},
+			cancel:function()
 			{
-				a.setMessage('Unexpected error: ' + error.code);
-			}
-			a.show();
-		},
-		overlay:container.overlay,
-		showControls:false,	// don't show system controls
-		mediaTypes:Ti.Media.MEDIA_TYPE_VIDEO,
-		videoQuality:Ti.Media.QUALITY_640x480,
-		autohide:false // tell the system not to auto-hide and we'll do it ourself
-	});
-	container.open = function(){
-		container.win.open();
+			},
+			error:function(error)
+			{
+				var a = Titanium.UI.createAlertDialog({title:'Camera'});
+				if (error.code == Titanium.Media.NO_CAMERA)
+				{
+					a.setMessage('Please run this test on device');
+				}
+				else
+				{
+					a.setMessage('Unexpected error: ' + error.code);
+				}
+				a.show();
+			},
+			overlay:container.overlay,
+			showControls:false,	// don't show system controls
+			mediaTypes:Ti.Media.MEDIA_TYPE_VIDEO,
+			videoQuality:Ti.Media.QUALITY_640x480,
+			autohide:false // tell the system not to auto-hide and we'll do it ourself
+		});		
 	};
+
+	container.win.addEventListener('open',function(){
+		container.showCamera();
+	});
 
 	return container.win;
 };

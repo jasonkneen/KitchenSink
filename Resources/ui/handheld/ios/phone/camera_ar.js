@@ -128,7 +128,7 @@ function cam_ar(_args) {
 			mediaTypes:Ti.Media.MEDIA_TYPE_PHOTO,
 			autohide:false	// tell the system not to auto-hide and we'll do it ourself
 		});
-	}
+	};
 		
 	container.win.addEventListener('open',function(){
 		container.showCamera();
@@ -144,7 +144,7 @@ function cam_ar(_args) {
 		Titanium.Geolocation.removeEventListener('heading',container.updateHeadingLabel);
 		Titanium.Geolocation.removeEventListener('location',container.locationUpdate);
 		container.win.close();
-	}
+	};
 
 	return container.win;
 };

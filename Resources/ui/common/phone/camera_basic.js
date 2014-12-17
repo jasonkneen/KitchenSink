@@ -54,7 +54,7 @@ function cam_basic(_args) {
 	win = Titanium.UI.createWindow({
 		title:_args.title
 	});
-	if (Ti.Platform.osname === 'android') {
+	if (Ti.Platform.osname === 'android'|| Ti.Platform.osname == "iphone" || Ti.Platform.osname == 'ipad') {
 		win.addEventListener('open', function(e) {
 			fireUpTheCamera();
 		});

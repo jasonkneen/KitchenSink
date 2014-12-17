@@ -82,52 +82,53 @@ function cam_overlay(_args) {
 	
 	container.closebutton.addEventListener('click',function()
 	{
-		alert("Camera closed");
 		Ti.Media.hideCamera();
+		alert("Camera closed");
 		container.win.close();
 	});
-
-	Titanium.Media.showCamera({
 	
-		success:function(event)
-		{
-			Ti.API.debug("picture was taken");
-			
-			// place our picture into our window
-			var imageView = Ti.UI.createImageView({
-				image:event.media,
-				width:container.win.width,
-				height:container.win.height
-			});
-			container.win.add(imageView);
-			
-			// programatically hide the camera
-			Ti.Media.hideCamera();
-		},
-		cancel:function()
-		{
-		},
-		error:function(error)
-		{
-			var a = Titanium.UI.createAlertDialog({title:'Camera'});
-			if (error.code == Titanium.Media.NO_CAMERA)
+	container.showCamera = function(){
+		Titanium.Media.showCamera({
+		
+			success:function(event)
 			{
-				a.setMessage('Please run this test on device');
-			}
-			else
+				Ti.API.debug("picture was taken");
+				
+				// place our picture into our window
+				var imageView = Ti.UI.createImageView({
+					image:event.media,
+					width:container.win.width,
+					height:container.win.height
+				});
+				container.win.add(imageView);
+				
+				// programatically hide the camera
+				Ti.Media.hideCamera();
+			},
+			cancel:function()
 			{
-				a.setMessage('Unexpected error: ' + error.code);
-			}
-			a.show();
-		},
-		overlay:container.overlay,
-		showControls:false,	// don't show system controls
-		mediaTypes:Ti.Media.MEDIA_TYPE_PHOTO,
-		autohide:false // tell the system not to auto-hide and we'll do it ourself
-	});
-	container.open = function(){
-		container.win.open();
+			},
+			error:function(error)
+			{
+				var a = Titanium.UI.createAlertDialog({title:'Camera'});
+				if (error.code == Titanium.Media.NO_CAMERA)
+				{
+					a.setMessage('Please run this test on device');
+				}
+				else
+				{
+					a.setMessage('Unexpected error: ' + error.code);
+				}
+				a.show();
+			},
+			overlay:container.overlay,
+			showControls:false,	// don't show system controls
+			mediaTypes:Ti.Media.MEDIA_TYPE_PHOTO,
+			autohide:false // tell the system not to auto-hide and we'll do it ourself
+		});
 	};
+	
+	container.win.addEventListener('open',container.showCamera);
 	return container.win;
 };
 
