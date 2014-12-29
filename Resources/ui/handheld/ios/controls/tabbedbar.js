@@ -34,7 +34,7 @@ function tabbedbar(_args) {
 		tb2.index = 0;
 		tb3.index = 0;
 		tb4.index = 0;
-	
+		tb5.index = 0;
 	});
 	
 	//
@@ -109,15 +109,15 @@ function tabbedbar(_args) {
 	
 	
 	// title control
-	var tb4 = Titanium.UI.iOS.createTabbedBar({
+	var tb5 = Titanium.UI.iOS.createTabbedBar({
 		labels:['One', 'Two'],
 		index:0,
 		backgroundColor:'red',
 		style:Titanium.UI.iPhone.SystemButtonStyle.BAR
 	});
-	win.setTitleControl(tb4);
+	win.setTitleControl(tb5);
 	
-	tb4.addEventListener('click', function(e)
+	tb5.addEventListener('click', function(e)
 	{
 		l.text = 'You clicked index = ' + e.index;
 	});
