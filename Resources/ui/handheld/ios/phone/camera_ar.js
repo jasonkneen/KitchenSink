@@ -24,13 +24,13 @@ function cam_ar(_args) {
 	});
 	
 	container.messageView = Titanium.UI.createView({
-		height:60,
-		width:250,
+		height:80,
+		width:270,
 		top:10
 	});
 	
 	container.indView = Titanium.UI.createView({
-		height:60,
+		height:80,
 		width:270,
 		backgroundColor:'#000',
 		borderRadius:10,
@@ -53,19 +53,24 @@ function cam_ar(_args) {
 	container.overlay.add(container.button);
 	container.overlay.add(container.messageView);
 	
-	container.heading;
-	container.gps='...';
-	container.address='calculating address';
+	container.heading = null;
+	container.gps=null;
+	container.address=null;
 	
 	container.refreshLabel = function ()
 	{
-		var text = "Heading: "+Math.round(container.heading)+"°, Location: "+container.gps;
-		if (container.address)
-		{
-			text+="\n"+container.address;
+		var text = '';
+		if (container.heading != null) {
+			text = text + 'Heading: '+Math.round(container.heading)+'°\n';
+		}
+		if (container.gps != null) {
+			text = text + 'Location: '+container.gps+'\n';
+		}
+		if (container.address != null) {
+			text = text + container.address;
 		}
 		container.message.text = text;
-	}
+	};
 	
 	Ti.include("/etc/version.js");
 	if (isIPhone3_2_Plus())
@@ -75,15 +80,26 @@ function cam_ar(_args) {
 	
 	container.locationUpdate = function(e)
 	{
-		var longitude = e.coords.longitude;
-		var latitude = e.coords.latitude;
-		container.gps = Math.round(longitude)+' x '+Math.round(latitude);
-		Titanium.Geolocation.reverseGeocoder(latitude,longitude,function(evt)
-		{
-			var places = evt.places[0];
-			container.address = places.street ? places.street : places.address;
-			container.refreshLabel();
-		});
+		if(e.error) {
+			Ti.API.info('Could not obtain location'+JSON.stringify(e));
+			container.gps = null;
+			container.address = null;
+		} else {
+			var longitude = e.coords.longitude;
+			var latitude = e.coords.latitude;
+			container.gps = Math.round(longitude)+' x '+Math.round(latitude);
+			Titanium.Geolocation.reverseGeocoder(latitude,longitude,function(evt)
+			{
+				if(evt.error) {
+					Ti.API.info('Error in reverse geocoder '+JSON.stringify(evt));
+					container.address = null;
+				} else {
+					var places = evt.places[0];
+					container.address = places.street ? places.street : places.address;
+					container.refreshLabel();
+				}
+			});
+		}
 		container.refreshLabel();
 	};
 
@@ -92,11 +108,11 @@ function cam_ar(_args) {
 	{
 		if (e.error)
 		{
-			container.updatedHeading.text = 'error: ' + e.error;
-			return;
+			Ti.API.info('Could not obtain heading'+JSON.stringify(e));
+			container.heading = null;
+		} else {
+			container.heading = e.heading.magneticHeading;
 		}
-	
-		container.heading = e.heading.magneticHeading;
 		container.refreshLabel();
 	};
 
