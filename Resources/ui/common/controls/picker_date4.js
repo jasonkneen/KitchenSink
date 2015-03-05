@@ -70,7 +70,7 @@ function picker_date4(_args) {
 			button.title = 'Start';
 			clearInterval(timer);
 			timer = null;
-            label.text = " Stop ("+(duration/1000)+" s Remaining)";
+			label.text = " Stop ("+(duration/1000)+" s Remaining)";
 		}
 	});
 	
