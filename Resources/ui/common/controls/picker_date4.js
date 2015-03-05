@@ -25,10 +25,8 @@ function picker_date4(_args) {
 	win.add(picker);
 	
 	var label = Ti.UI.createLabel({
-		text:'Press Start',
+		text:'Start (180 s Remaining)',
 		top:6,
-		width:'auto',
-		height:'auto',
 		textAlign:'center',
 		color:'white'
 	});
@@ -48,13 +46,14 @@ function picker_date4(_args) {
 	{
 		duration-=1000;
 		picker.countDownDuration = duration;
-		label.text = "Remaining: "+(duration/1000)+" seconds";
+		label.text = "  Run ("+(duration/1000)+" s Remaining)";
 		if (duration<=0)
 		{
 			clearInterval(timer);
 			button.title = 'Start';
 			label.text = "Done!";
 			duration = original_duration;
+			picker.countDownDuration = duration;
 		}
 	}
 	
@@ -71,8 +70,7 @@ function picker_date4(_args) {
 			button.title = 'Start';
 			clearInterval(timer);
 			timer = null;
-			duration = original_duration;
-			label.text = "Stopped";
+            label.text = " Stop ("+(duration/1000)+" s Remaining)";
 		}
 	});
 	
@@ -82,7 +80,7 @@ function picker_date4(_args) {
 		{
 			if (button.title == 'Start')
 			{
-				label.text = 'Duration (ms): '+e.countDownDuration;
+				label.text = 'Start ('+e.countDownDuration/1000+' s Remaining)';
 				duration = e.countDownDuration;
 			}
 		}
