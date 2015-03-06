@@ -62,7 +62,7 @@ function win_layout(_args) {
 		title:'Save my Information',
 		top:170,
 		left:30,
-		height:30,
+		height:Ti.UI.SIZE,
 		width:250
 	});
 	win.add(save);

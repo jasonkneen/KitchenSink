@@ -45,7 +45,7 @@ function win_standalone(_args) {
 		// create a button to close window
 		var b = Titanium.UI.createButton({
 			title:'Close',
-			height:30,
+			height:Ti.UI.SIZE,
 			width:150
 		});
 		w.add(b);
@@ -323,7 +323,7 @@ function win_standalone(_args) {
 		// create a button to close window
 		var b = Titanium.UI.createButton({
 			title:'Close',
-			height:30,
+			height:Ti.UI.SIZE,
 			width:150
 		});
 		w.add(b);
