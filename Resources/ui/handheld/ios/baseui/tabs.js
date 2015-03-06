@@ -150,8 +150,8 @@ function tabs(_args) {
 		}
 		else
 		{
-			tabGroup.tabs[0].icon = '/images/tabs/KS_nav_views.png';
-			tabGroup.tabs[1].icon = '/images/tabs/KS_nav_ui.png';
+			tabGroup.tabs[0].icon = '/images/tabs/KS_nav_ui.png';
+			tabGroup.tabs[1].icon = '/images/tabs/KS_nav_views.png';
 			tabGroup.tabs[2].icon = '/images/tabs/KS_nav_phone.png';
 			tabGroup.tabs[3].icon = '/images/tabs/KS_nav_platform.png';
 			tabGroup.tabs[4].icon = '/images/tabs/KS_nav_mashup.png';
@@ -176,8 +176,8 @@ function tabs(_args) {
 	
 	win.addEventListener('close',function(){
 		//Reset tabs on window close.
-		tabGroup.tabs[0].icon = '/images/tabs/KS_nav_views.png';
-		tabGroup.tabs[1].icon = '/images/tabs/KS_nav_ui.png';
+		tabGroup.tabs[0].icon = '/images/tabs/KS_nav_ui.png';
+		tabGroup.tabs[1].icon = '/images/tabs/KS_nav_views.png';
 		tabGroup.tabs[2].icon = '/images/tabs/KS_nav_phone.png';
 		tabGroup.tabs[3].icon = '/images/tabs/KS_nav_platform.png';
 		tabGroup.tabs[4].icon = '/images/tabs/KS_nav_mashup.png';
