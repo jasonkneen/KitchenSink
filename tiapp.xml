@@ -63,7 +63,7 @@
                     </intent-filter>
                 </activity>
             </application>
-            <uses-sdk android:targetSdkVersion="14"/>
+            <uses-sdk android:targetSdkVersion="21"/>
         </manifest>
         <activity android:name="ti.modules.titanium.ui.android.TiPreferencesActivity"/>
         <services>
