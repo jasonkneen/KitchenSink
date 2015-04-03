@@ -164,7 +164,7 @@
         <access origin="http://appc.me/Test/Cookies/" subdomains="true"/>
     </tizen>
     <modules>
-        <module platform="android" version="4.0.1">facebook</module>
-        <module platform="iphone" version="4.0.0">facebook</module>
+        <module platform="android">facebook</module>
+        <module platform="iphone">facebook</module>
     </modules>
 </ti:app>
