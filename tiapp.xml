@@ -26,7 +26,7 @@
     <fullscreen>false</fullscreen>
     <navbar-hidden>false</navbar-hidden>
     <analytics>true</analytics>
-    <guid>28a706e9-4130-4acb-bc76-9494255a9279</guid>
+    <guid></guid>
     <ios>
         <plist>
             <dict>
@@ -164,7 +164,7 @@
         <access origin="http://appc.me/Test/Cookies/" subdomains="true"/>
     </tizen>
     <modules>
-        <module platform="android" version="4.0.1">facebook</module>
-        <module platform="iphone" version="4.0.0">facebook</module>
+        <module platform="android">facebook</module>
+        <module platform="iphone">facebook</module>
     </modules>
 </ti:app>
