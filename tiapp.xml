@@ -26,7 +26,6 @@
     <fullscreen>false</fullscreen>
     <navbar-hidden>false</navbar-hidden>
     <analytics>true</analytics>
-    <guid></guid>
     <ios>
         <plist>
             <dict>
