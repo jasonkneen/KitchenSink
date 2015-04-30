@@ -454,7 +454,7 @@ function geolocation(_args) {
 						title:'Reverse geo error',
 						message:evt.error
 					}).show();
-					Ti.API.info("Code translation: "+translateErrorCode(e.code));
+					Ti.API.info("Code translation: "+translateErrorCode(evt.code));
 				}
 			});	
 	
@@ -501,7 +501,7 @@ function geolocation(_args) {
 						title:'Forward geo error',
 						message:evt.error
 					}).show();
-					Ti.API.info("Code translation: "+translateErrorCode(e.code));
+					Ti.API.info("Code translation: "+translateErrorCode(evt.code));
 				}
 			});
 		});
