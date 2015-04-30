@@ -73,7 +73,7 @@ function cam_ar(_args) {
 	};
 	
 	Ti.include("/etc/version.js");
-	if (isIPhone3_2_Plus())
+	if (!isiOS6Plus()) //purpose is deprecated >= iOS6. Set NSLocationUsageDescription key instead in tiapp.xml.
 	{
 		Titanium.Geolocation.purpose = "AR Demo";
 	}
