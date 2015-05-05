@@ -35,6 +35,8 @@
                 This appears in the alert dialog when asking the user for permission to
                 access their location.
                 </string>
+                <key>NSLocationUsageDescription</key>
+                <string>AR Demo</string>
                 <key>UISupportedInterfaceOrientations~iphone</key>
                 <array>
                     <string>UIInterfaceOrientationPortrait</string>
