@@ -6,6 +6,7 @@
         <target device="ipad">true</target>
         <target device="android">true</target>
     </deployment-targets>
+    <guid>11111111-1111-1111-1111-111111111111</guid>
     <property name="ti.android.useLegacyWindow" type="bool">true</property>
     <property name="ti.ui.defaultunit" type="string">dp</property>
     <sdk-version>4.0.1.GA</sdk-version>
