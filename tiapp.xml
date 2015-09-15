@@ -9,7 +9,7 @@
     <guid>11111111-1111-1111-1111-111111111111</guid>
     <property name="ti.android.useLegacyWindow" type="bool">true</property>
     <property name="ti.ui.defaultunit" type="string">dp</property>
-    <sdk-version>4.0.1.GA</sdk-version>
+    <sdk-version>5.0.0.GA</sdk-version>
     <id>com.appcelerator.kitchensink</id>
     <name>KitchenSink</name>
     <version>4.0.0</version>
