@@ -9,7 +9,7 @@
     <guid>11111111-1111-1111-1111-111111111111</guid>
     <property name="ti.android.useLegacyWindow" type="bool">true</property>
     <property name="ti.ui.defaultunit" type="string">dp</property>
-    <sdk-version>5.0.2.GA</sdk-version>
+    <sdk-version>5.1.0.v20151009204425</sdk-version>
     <id>com.appcelerator.kitchensink</id>
     <name>KitchenSink</name>
     <version>5.0.0</version>
@@ -103,9 +103,6 @@
                         <category android:name="android.intent.category.LAUNCHER"/>
                     </intent-filter>
                 </activity>
-                <activity android:label="KitchenSinkFacebook"
-                    android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-                    android:name="com.facebook.FacebookActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
                 <activity android:label="KitchenSinkFacebook"
                     android:name="com.facebook.LoginActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
                 <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/app_id"/>
