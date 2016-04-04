@@ -3,7 +3,7 @@ function xhr_download(_args) {
 			title:_args.title
 		}),
 		isAndroid = Ti.Platform.name === 'android',
-		isTizen = Titanium.Platform.osname === 'tizen',	
+		isTizen = Titanium.Platform.osname === 'tizen',
 		ind = Titanium.UI.createProgressBar({
 			width:200,
 			height:50,
@@ -24,7 +24,7 @@ function xhr_download(_args) {
 
 	win.add(ind);
 	ind.show();
-	
+
 	var b1 = Titanium.UI.createButton({
 		title:'Set Web View (url)',
 		height:40,
@@ -33,7 +33,7 @@ function xhr_download(_args) {
 	});
 	win.add(b1);
 	var c = null;
-	
+
 	b1.addEventListener('click', function()
 	{
 		var filename = (isAndroid || isTizen) ? 'test.png' : 'test.pdf';
@@ -49,7 +49,7 @@ function xhr_download(_args) {
 			var f = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory, filename);
 			isAndroid && f.write(this.responseData);
 
-			// WebView does`t work with HTML5-based files on Tizen/MobileWeb, only url to files on Tizen`s device or web.    
+			// WebView does`t work with HTML5-based files on Tizen/MobileWeb, only url to files on Tizen`s device or web.
 			var wv = Ti.UI.createWebView({
 				url:f.nativePath,
 				bottom:0,
@@ -68,39 +68,39 @@ function xhr_download(_args) {
 		{
 			Ti.API.info('XHR Error ' + e.error);
 		};
-	
+
 		// open the client
 		if (isAndroid) {
 			// android's WebView doesn't support embedded PDF content
-			c.open('GET', 'http://developer.appcelerator.com/blog/wp-content/themes/newapp/images/appcelerator_avatar.png?s=48');
+			c.open('GET', 'http://www.appcelerator.com/wp-content/themes/appc-rwd/assets/media/images/logo.png');
 		} else if (isTizen) {
 			c.open('GET','https://mobile.twitter.com/session/new');
 			// Property "file" is path to file. It is not object "file".
 			// See documentation about Titanium.Network.HTTPClient
-			c.file = filename; 
+			c.file = filename;
 		} else {
 			c.open('GET','http://www.appcelerator.com/assets/The_iPad_App_Wave.pdf');
 			c.file = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory, filename);
 		}
-		
+
 		// send the data
 		c.send();
-	
+
 	});
-	
+
 	var b2 = Titanium.UI.createButton({
 		title:'Set Web View (data)',
 		height:40,
 		width:200,
 		top:120
 	});
-	
-	
+
+
 	b2.addEventListener('click', function()
 	{
 		ind.value = 0;
 		isTizen && (ind.message = 'Downloading png File');
-		
+
 		c = Titanium.Network.createHTTPClient();
 
 		c.onload = function()
@@ -139,7 +139,7 @@ function xhr_download(_args) {
 			ind.value = e.progress ;
 			Ti.API.info('ONDATASTREAM2 - PROGRESS: ' + e.progress);
 		};
-	
+
 		// open the client
 		if (isAndroid || isTizen) {
 			// android's WebView doesn't support embedded PDF content
@@ -147,13 +147,13 @@ function xhr_download(_args) {
 		} else {
 			c.open('GET','http://www.appcelerator.com/assets/The_iPad_App_Wave.pdf');
 		}
-	
+
 		// send the data
 		c.send();
 	});
-	
+
 	win.add(b2);
-	
+
 	var abort = Titanium.UI.createButton({
 		title:'Abort',
 		height:40,
@@ -161,16 +161,16 @@ function xhr_download(_args) {
 		top:170
 	});
 	win.add(abort);
-	
+
 	abort.addEventListener('click', function()
 	{
 		// Prevent crash if the user clicks "abort" before clicking other buttons
 		c && c.abort();
-	
+
 		c = Titanium.Network.createHTTPClient();
 		ind.value = 0;
 	});
-	
+
 	var largeFile = Titanium.UI.createButton({
 		title:'Large File Download',
 		height:40,
@@ -197,8 +197,8 @@ function xhr_download(_args) {
 		{
 			Ti.UI.createAlertDialog({title:'XHR', message:'Error: ' + e.error}).show();
 		};
-		
-		c.open('GET','http://titanium-studio.s3.amazonaws.com/latest/Titanium_Studio.exe');
+
+		c.open('GET','http://titanium-studio.s3.amazonaws.com/latest/Appcelerator_Studio.exe');
 		ind.message = 'Downloading large file';
 		if (isTizen) {
 			// Property "file" is a path to a file. It is not an object of the type "File".
@@ -209,7 +209,7 @@ function xhr_download(_args) {
 		}
 		c.send();
 	});
-	
+
 	return win;
 };
 

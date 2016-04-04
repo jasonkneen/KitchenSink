@@ -37,7 +37,7 @@ function xhr_error(_args) {
 	};
 	
 	// open the client
-	xhr.open('GET','http://www.fre100.com');
+	xhr.open('GET','https://httpbin.org/get');
 	
 	// send the data
 	xhr.send();

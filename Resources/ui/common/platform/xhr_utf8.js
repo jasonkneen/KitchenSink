@@ -2,7 +2,7 @@ function xhr_utf8(_args) {
 	var win=Titanium.UI.createWindow({
 		title:_args.title
 	});
-	
+
 	var l1 = Titanium.UI.createLabel({
 		text:'UTF-8 GET',
 		font:{fontSize:16,fontWeight:'bold'},
@@ -12,7 +12,7 @@ function xhr_utf8(_args) {
 		height:'auto'
 	});
 	win.add(l1);
-	
+
 	var l2 = Titanium.UI.createTextArea({
 		value:'Waiting for response...',
 		font:{fontSize:13},
@@ -26,7 +26,7 @@ function xhr_utf8(_args) {
 		borderRadius:5
 	});
 	win.add(l2);
-	
+
 	var l3 = Titanium.UI.createLabel({
 		text:'UTF-8 POST',
 		font:{fontSize:16,fontWeight:'bold'},
@@ -36,7 +36,7 @@ function xhr_utf8(_args) {
 		left:10
 	});
 	win.add(l3);
-	
+
 	var l4 = Titanium.UI.createTextArea({
 		value:'Waiting for response...',
 		font:{fontSize:13},
@@ -49,9 +49,9 @@ function xhr_utf8(_args) {
 		borderColor:'#bbb',
 		borderRadius:5
 	});
-	
+
 	win.add(l4);
-	
+
 	var l5 = Titanium.UI.createLabel({
 		text:'UTF-8 GET w/Query String',
 		font:{fontSize:16,fontWeight:'bold'},
@@ -61,7 +61,7 @@ function xhr_utf8(_args) {
 		left:10
 	});
 	win.add(l5);
-	
+
 	var l6 = Titanium.UI.createTextArea({
 		value:'Waiting for response...',
 		font:{fontSize:13},
@@ -88,9 +88,11 @@ function xhr_utf8(_args) {
 	{
 		Ti.API.info('in utf-8 error for GET');
 	};
-	xhr.open("GET","http://api.appcelerator.net/p/v1/echo?漢=€漢字");
+	xhr.open("GET","https://107c13498b9d931eb26c1ae4f6d85ae569f78ae5.cloudapp-enterprise.appcelerator.com/api/KitchenSink/echo?a=€漢字");
+	var authstr = 'Basic ' + Ti.Utils.base64encode('zTvmxByj5ZX+oYaXjTWFXX32uQw0Yqu9:');
+	xhr.setRequestHeader("Authorization", authstr);
 	xhr.send();
-	
+
 	//
 	// XHR POST
 	//
@@ -104,9 +106,12 @@ function xhr_utf8(_args) {
 	{
 		Ti.API.info('in utf-8 error for POST');
 	};
-	xhr2.open("POST","http://api.appcelerator.net/p/v1/echo");
+	xhr2.open("POST","https://107c13498b9d931eb26c1ae4f6d85ae569f78ae5.cloudapp-enterprise.appcelerator.com/api/KitchenSink/postecho");
+	var authstr = 'Basic ' + Ti.Utils.base64encode('zTvmxByj5ZX+oYaXjTWFXX32uQw0Yqu9:');
+	xhr2.setRequestHeader("Authorization", authstr);
+	// xhr2.setRequestHeader("Content-Type","application/json");
 	xhr2.send({"a":"€漢字", "b":"aöbäcüd"});
-	
+
 	//
 	// XHR GET with Query String
 	//
@@ -120,9 +125,11 @@ function xhr_utf8(_args) {
 	{
 		Ti.API.info('in utf-8 error for GET with QS:' + e.error);
 	};
-	xhr3.open("GET","http://api.appcelerator.net/p/v1/echo?a=€漢字");
+	xhr3.open("GET","https://107c13498b9d931eb26c1ae4f6d85ae569f78ae5.cloudapp-enterprise.appcelerator.com/api/KitchenSink/echo?a=€漢字");
+	var authstr = 'Basic ' + Ti.Utils.base64encode('zTvmxByj5ZX+oYaXjTWFXX32uQw0Yqu9:');
+	xhr3.setRequestHeader("Authorization", authstr);
 	xhr3.send();
-	
+
 	return win;
 };
 
