@@ -63,10 +63,9 @@ function rss(_args) {
 	function displayItems(itemList){
 
 		for (var c=0;c < itemList.length;c++){
-
-			Ti.API.info('item title :' + itemList.item(c).getElementsByTagName("title").item(0).text);
-			Ti.API.info('item description :' + itemList.item(c).getElementsByTagName("description").item(0).text);
-			Ti.API.info('item enclosure url :' + itemList.item(c).getElementsByTagName("enclosure").item(0).getAttribute("url"));
+				Ti.API.info('item title :' + itemList.item(c).getElementsByTagName("title").item(0).text);
+				Ti.API.info('item description :' + itemList.item(c).getElementsByTagName("description").item(0).text);
+				Ti.API.info('item enclosure url :' + itemList.item(c).getElementsByTagName("enclosure").item(0).getAttribute("url"));
 
 			var title = null;
 			var desc = null;
