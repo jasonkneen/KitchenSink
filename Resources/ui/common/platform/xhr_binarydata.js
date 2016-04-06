@@ -2,7 +2,7 @@ function xhr_binary(_args) {
 	var win = Titanium.UI.createWindow({
 		title:_args.title
 	});
-	
+
 	var l = Titanium.UI.createLabel({
 		text:'Downloading image...',
 		font:{fontSize:13},
@@ -19,9 +19,9 @@ function xhr_binary(_args) {
 		width:80
 	});
 	win.add(imageView);
-	
+
 	var xhr = Titanium.Network.createHTTPClient();
-	
+
 	xhr.onload = function()
 	{
 		var f = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory,'ti.png');
@@ -29,11 +29,12 @@ function xhr_binary(_args) {
 		imageView.image = f.nativePath;
 	};
 	// open the client (and test HTTPS)
-	xhr.open('GET','http://developer.appcelerator.com/blog/wp-content/themes/newapp/images/appcelerator_avatar.png?s=48');
-	
-	// send the data
+
+	xhr.open("GET","https://107c13498b9d931eb26c1ae4f6d85ae569f78ae5.cloudapp-enterprise.appcelerator.com/api/KitchenSink/imageme");
+	var authstr = 'Basic ' + Ti.Utils.base64encode('zTvmxByj5ZX+oYaXjTWFXX32uQw0Yqu9:');
+	xhr.setRequestHeader("Authorization", authstr);
 	xhr.send();
-	
+
 	return win;
 };
 

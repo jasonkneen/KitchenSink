@@ -69,7 +69,7 @@ function xml_rss(_args) {
 				var w = Ti.UI.createWindow({ title: doctitle }),
 					wb = Ti.UI.createWebView({ url: e.row.url });
 				w.add(wb);
-				args.containingTab.open(w, {animated: true})
+				args.containingTab.open(w, {animated: true});
 			});
 		}
 		catch(E)
