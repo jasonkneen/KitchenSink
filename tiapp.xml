@@ -96,11 +96,15 @@
                         <category android:name="android.intent.category.LAUNCHER"/>
                     </intent-filter>
                 </activity>
+                <activity
+                    android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+                    android:label="KitchenSinkFacebook"
+                    android:name="com.facebook.FacebookActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
                 <activity android:label="KitchenSinkFacebook"
                     android:name="com.facebook.LoginActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
                 <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/app_id"/>
             </application>
-            <uses-sdk android:targetSdkVersion="21"/>
+            <uses-sdk android:targetSdkVersion="23"/>
         </manifest>
         <activity android:name="ti.modules.titanium.ui.android.TiPreferencesActivity"/>
         <services>
