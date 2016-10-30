@@ -43,7 +43,7 @@ function BaseUIWindow(title) {
 	// add android specific tests
 	if (Titanium.Platform.osname == 'android')
 	{
-		data.push({title:'Preferences', hasChild:true, test:'ui/handheld/android/baseui/preferences'});
+	    data.push({title:'Preferences', hasChild:true, test:'ui/handheld/android/baseui/preferences'});
 	    data.push({title:'Hide Soft Keyboard (Android)', hasChild:true, test:'ui/handheld/android/baseui/android_hide_softkeyboard'});
 	    data.push({title: 'Window Soft Input (Android)', hasChild:true, test:'ui/handheld/android/baseui/android_window_soft_input_mode'});
 	    data.push({title: 'Menu (Android)', hasChild:true, test:'ui/handheld/android/baseui/android_menus'});
